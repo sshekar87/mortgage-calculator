@@ -1,0 +1,947 @@
+/* Modern Mortgage Calculator CSS - Inspired by AltGage Design */
+
+/* Base Styles & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Main Container */
+.calculator-container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    width: 800px;
+    max-width: 95%;
+}
+
+/* Calculator Header */
+h1 {
+    color: #2d3748;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 15px;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f8fafc;
+    color: #2d3748;
+    transition: all 0.2s ease;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #0073e6;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 115, 230, 0.15);
+}
+
+/* Calculate Button */
+button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+    margin-bottom: 26px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0060c0;
+}
+
+/* Results Section */
+.results {
+    background-color: #f0f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-left: 4px solid #0073e6;
+}
+
+.results h2 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #2d3748;
+    display: flex;
+    justify-content: space-between;
+}
+
+.results span {
+    font-weight: 700;
+    color: #0073e6;
+}
+
+/* Loan Comparison Section */
+.loan-comparison {
+    margin-top: 35px;
+    margin-bottom: 35px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.loan-comparison h2 {
+    color: #2d3748;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+/* Amortization Section */
+.amortization-section {
+    margin-top: 35px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.amortization-section h2 {
+    color: #2d3748;
+    font-size: 20px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.controls {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: right;
+}
+
+th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #4a5568;
+    text-align: right;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* Year rows in amortization */
+.year-row {
+    background-color: #f1f5f9;
+    font-weight: 600;
+}
+
+.year-row:hover {
+    background-color: #e9f0f8;
+}
+
+/* Expand/Collapse Buttons */
+.expand-btn {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    box-shadow: none;
+}
+
+.expand-btn:hover {
+    background-color: #cbd5e0;
+}
+
+#expand-all {
+    background-color: #f1f5f9;
+    color: #4a5568;
+    padding: 8px 16px;
+    width: auto;
+    font-size: 14px;
+    border-radius: 6px;
+    box-shadow: none;
+}
+
+#expand-all:hover {
+    background-color: #e2e8f0;
+}
+
+/* Month detail tables */
+.months-table {
+    margin: 10px 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+}
+
+.months-table th, .months-table td {
+    padding: 8px;
+    font-size: 14px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.months-table th {
+    background-color: #f8fafc;
+    font-size: 13px;
+}
+
+/* Highlight specific cells */
+#comparison-table tr:last-child {
+    font-weight: 600;
+}
+
+#comparison-table td:nth-child(3) {
+    color: #e53e3e;  /* Red for percentage difference */
+}
+
+#comparison-table td:nth-child(5) {
+    color: #3182ce;  /* Blue for TIP percentage */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .calculator-container {
+        padding: 20px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px 6px;
+    }
+    
+    .expand-btn {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+    
+    .results h2 {
+        font-size: 16px;
+        flex-direction: column;
+    }
+    
+    .results span {
+        margin-top: 5px;
+    }
+}
+
+/* Rate Display Styling */
+.rate-display {
+    margin-top: 15px;
+}
+
+.rate-display h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.rate-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.rate-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.main-rate, .apr-rate {
+    text-align: center;
+}
+
+.rate-number, .apr-number {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.rate-label, .apr-label {
+    display: block;
+    font-size: 14px;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+.loan-details {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.loan-details p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.use-rate-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.use-rate-btn:hover {
+    background-color: white;
+    color: #667eea;
+}
+
+/* Rate display styling */
+.rate-comparison h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2d3748;
+}
+
+.rate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.rate-card-mini {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.rate-card-mini:hover {
+    transform: translateY(-2px);
+}
+
+.rate-card-mini h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.rate-numbers {
+    margin: 15px 0;
+}
+
+.rate-big {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.apr-small {
+    display: block;
+    font-size: 13px;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+.select-rate-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-rate-btn:hover {
+    background: white;
+    color: #4facfe;
+}
+
+.loan-info {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #4a5568;
+}
+
+.loan-explanations {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    border-left: 4px solid #4299e1;
+}
+
+.loan-explanations h4 {
+    margin: 0 0 10px 0;
+    color: #2d3748;
+    font-size: 16px;
+}
+
+.explanation {
+    margin: 5px 0;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+/* Save section styling */
+.save-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+#save-calculation-btn {
+    background-color: #805ad5;
+    margin-bottom: 20px;
+}
+
+#save-calculation-btn:hover {
+    background-color: #6b46c1;
+}
+
+.saved-calculation-card {
+    background-color: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.saved-info {
+    flex-grow: 1;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.saved-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.load-btn, .delete-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.load-btn {
+    background-color: #4299e1;
+    color: white;
+}
+
+.load-btn:hover {
+    background-color: #3182ce;
+}
+
+.delete-btn {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c53030;
+}
+
+/* Lead Capture Styling */
+.lead-capture-section {
+    margin-top: 25px;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lead-capture-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.lead-capture-card h3 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.lead-capture-card p {
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+    font-size: 16px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: rgba(255,255,255,0.9);
+    color: #2d3748;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#submit-lead-btn {
+    flex: 1;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submit-lead-btn:hover {
+    background-color: white;
+    color: #667eea;
+}
+
+#maybe-later-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#maybe-later-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+}
+
+/* Loading spinner styles */
+.calculation-status {
+    margin-bottom: 15px;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4a5568;
+    font-size: 14px;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e2e8f0;
+    border-top: 2px solid #0073e6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Results fade-in animation */
+.results h2 {
+    transition: opacity 0.3s ease;
+}
+
+.results.calculating h2 {
+    opacity: 0.5;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mortgage Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Mortgage Calculator</h1>
+        
+        <!-- RESULTS SECTION - MOVED TO TOP -->
+        <div class="results-section" id="results-section">
+            <div class="calculation-status" id="calculation-status">
+                <div class="loading-spinner" id="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Calculating...</span>
+                </div>
+            </div>
+            
+            <div class="results" id="results">
+                <div class="main-payment">
+                    <h2>Monthly Payment: <span id="monthly-payment">$0</span></h2>
+                </div>
+                
+                /* Enhanced Payment breakdown with clean visual hierarchy */
+                .payment-breakdown {
+                    margin: 20px 0;
+                    background-color: rgba(255,255,255,0.1);
+                    border-radius: 12px;
+                    padding: 20px;
+                }
+
+                /* Visual breakdown bar - amounts only */
+                .breakdown-bar {
+                    display: flex;
+                    background-color: rgba(255,255,255,0.05);
+                    border-radius: 8px;
+                    overflow: hidden;
+                    margin-bottom: 15px;
+                    height: 50px;
+                    border: 1px solid rgba(255,255,255,0.2);
+                }
+
+                .bar-segment {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 5px;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    color: white;
+                    font-size: 12px;
+                    font-weight: 700;
+                    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+                }
+
+                .pi-segment {
+                    background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+                }
+
+                .tax-segment {
+                    background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
+                }
+
+                .insurance-segment {
+                    background: linear-gradient(45deg, #a8edea 0%, #fed6e3 100%);
+                }
+
+                /* Labels below the bar with better contrast */
+                .breakdown-labels {
+                    display: flex;
+                }
+
+                .label-item {
+                    flex: 1;
+                    text-align: center;
+                    padding: 8px;
+                }
+
+                .label-text {
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: white;
+                    opacity: 0.9;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                .pi-label { color: #4facfe; }
+                .tax-label { color: #fa709a; }
+                .insurance-label { color: #a8edea; }
+
+                /* Total interest - left aligned text, right aligned number */
+                .secondary-info {
+                    margin-top: 15px;
+                    opacity: 0.9;
+                    font-size: 16px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .secondary-info .interest-label {
+                    text-align: left;
+                }
+
+                .secondary-info .interest-amount {
+                    text-align: right;
+                    font-weight: 600;
+                }
+
+                .breakdown-total .total-label {
+                    font-size: 12px;
+                    opacity: 0.9;
+                    margin-bottom: 5px;
+                    font-weight: 500;
+                }
+
+                .breakdown-total .total-amount {
+                    font-size: 24px;
+                    font-weight: 700;
+                    color: white;
+                    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                }
+                
+                <div class="secondary-info">
+                    <p>Total Interest: <span id="total-interest">$0</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- INPUT SECTION -->
+        <div class="input-section">
+            <h3>Loan Details</h3>
+            
+            <div class="input-group">
+                <label for="home-price">Home Price ($):</label>
+                <input type="number" id="home-price" value="400000">
+            </div>
+            
+            <div class="input-group">
+                <label for="down-payment-percent">Down Payment (%):</label>
+                <input type="number" id="down-payment-percent" step="0.5" value="15" min="0" max="100">
+            </div>
+            
+            <div class="input-group">
+                <label for="down-payment-amount">Down Payment ($):</label>
+                <input type="number" id="down-payment-amount" value="60000" readonly style="background-color: #f0f0f0;">
+            </div>
+            
+            <div class="input-group">
+                <label for="loan-amount">Loan Amount ($):</label>
+                <input type="number" id="loan-amount" value="340000" readonly style="background-color: #f0f0f0;">
+            </div>
+            
+            <div class="input-group">
+                <label for="interest-rate">Interest Rate (%):</label>
+                <input type="number" id="interest-rate" step="0.125" value="7.0">
+            </div>
+            
+            <div class="input-group">
+                <label for="loan-term">Loan Term (years):</label>
+                <input type="number" id="loan-term" value="30">
+            </div>
+            
+            <!-- NEW: Property costs section -->
+            <h3>Property Costs</h3>
+            
+            <div class="input-group">
+                <label for="property-tax-rate">Property Tax Rate (% per year):</label>
+                <input type="number" id="property-tax-rate" step="0.01" value="1.2" min="0" max="5">
+            </div>
+            
+            <div class="input-group">
+                <label for="home-insurance">Home Insurance ($ per year):</label>
+                <input type="number" id="home-insurance" value="1200" min="0">
+            </div>
+            
+            <div class="input-group">
+                <button id="fetch-rates-btn" type="button">Get Current Rates</button>
+                <div id="rate-options" style="display: none;">
+                    <!-- Rate options will appear here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- LEAD CAPTURE (existing) -->
+        <div class="lead-capture-section" id="lead-capture" style="display: none;">
+            <!-- Your existing lead capture HTML -->
+        </div>
+        
+        <!-- SAVED CALCULATIONS -->
+        <div class="save-section">
+            <button id="save-calculation-btn" type="button">Save This Calculation</button>
+            <div id="saved-calculations" style="display: none;">
+                <h3>Saved Calculations</h3>
+                <div id="saved-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+/* Save section enhancements */
+.save-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.save-header {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#save-calculation-btn {
+    background-color: #805ad5;
+    flex: 1;
+}
+
+#save-calculation-btn:hover {
+    background-color: #6b46c1;
+}
+
+.toggle-saved-btn {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.toggle-saved-btn:hover {
+    background-color: #cbd5e0;
+}
+
+.toggle-icon {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-saved-btn.expanded .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.toggle-saved-btn.expanded .toggle-text::after {
+    content: " (Hide)";
+}
